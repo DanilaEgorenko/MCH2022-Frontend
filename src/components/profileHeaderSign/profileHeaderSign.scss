@@ -1,0 +1,118 @@
+@import '../../index';
+
+.header__profile_sign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__avatar {
+    display: flex;
+    // width: calc($navbar-height-mobile - 8px);
+    // height: calc($navbar-height-mobile - 8px);
+    background-image: url('../../static/imgs/Industrial_Power_plant_1.svg');
+    background-color: $theme-bkgd;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    width: $navbar-height-mobile;
+    height: $navbar-height-mobile;
+
+    &_box {
+      display: flex;
+      width: $navbar-height-mobile;
+      height: $navbar-height-mobile;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+
+        & > .header__profile_sign__dropdown_content {
+          opacity: 100%;
+        }
+      }
+    }
+  }
+
+  &__text {
+    &_box {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      height: $navbar-height-mobile;
+      font-size: 1rem;
+      padding: 0 15px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      & > h5 {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    &_line {
+      line-height: calc(($navbar-line-height-mobile - 1.5rem - 6px) / 2);
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  &__dropdown {
+    &_content {
+      @extend .card;
+
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      margin-top: calc($navbar-line-height-mobile + 3px);
+      right: 0;
+      top: 0;
+      width: 100px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      padding: 3px;
+      z-index: 2;
+
+      & > button {
+        margin: 2px 0;
+      }
+    }
+  }
+}
+
+@media #{$medium-and-up} {
+  .header__profile_sign__avatar {
+    width: calc($navbar-height - 8px);
+    height: calc($navbar-height - 8px);
+  }
+  .header__profile_sign__avatar_box {
+    width: $navbar-height;
+    height: $navbar-height;
+  }
+  .header__profile_sign__text_line {
+    // line-height: calc(($navbar-line-height - 8px) / 3);
+    line-height: calc(($navbar-line-height - 1.5rem - 6px) / 2);
+  }
+  .header__profile_sign__text_box {
+    height: $navbar-height;
+  }
+  .header__profile_sign__dropdown_content {
+    margin-top: calc($navbar-line-height + 3px);
+  }
+}

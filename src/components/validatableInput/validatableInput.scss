@@ -1,0 +1,58 @@
+@import '../../index';
+@import './validateInput-variables.scss';
+
+.validatable-input {
+  &__underline {
+    position: relative;
+    width: 100%;
+    margin-top: -9px;
+    border-bottom: 1px solid $valinput-color-netral;
+    box-shadow: 0 1px 0 0 $valinput-color-netral;
+  
+    &::before, &::after {
+      position:absolute;
+      content: '';
+      height: 2px;
+      width: 100%;
+      bottom: -1px;
+      transition: box-shadow 0.3s, border 0.3s, width 0.3s;
+    }
+    &::after {
+      right: 0px;
+      border-bottom: 1px solid $valinput-color-error;
+      box-shadow: 0 1px 0 0 $valinput-color-error;
+      width: var(--validatable-input-error-percentage);
+    }
+    &::before {
+      left: 0px;
+      border-bottom: 1px solid $valinput-color-valid;
+      box-shadow: 0 1px 0 0 $valinput-color-valid;
+      width: calc(100% - var(--validatable-input-error-percentage) - var(--validatable-input-lines-offset));
+    }
+  }
+
+  &__error-msg {
+    @extend .material-tooltip;
+    visibility: visible;
+
+    position: absolute;
+    margin-top: calc(-9px - 3rem);
+    left: unset;
+    top: unset;
+    right: -100px;
+
+    width: 100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &.invalid {
+    >input {
+      color: $input-error-color;
+    }
+
+    >input:hover ~ .validatable-input__error-msg {
+      opacity: 100%;
+    }
+  }
+}

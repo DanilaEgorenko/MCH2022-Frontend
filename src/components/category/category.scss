@@ -1,0 +1,21 @@
+@import '../../index';
+
+.card-link {
+    width: calc(50% - 10px);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.background-photo {
+    height: 550px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.card-image {
+  position: relative;
+}

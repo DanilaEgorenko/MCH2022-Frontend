@@ -1,0 +1,24 @@
+@import '../../index';
+
+.tooltip {
+  position: relative;
+  display: block;
+
+  &__button {
+    border: 1px solid red;
+    display: flex;
+
+    
+  }
+
+  &__sign {
+    position: absolute;
+    border: 1px solid purple;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &__button:hover ~ .tooltip__sign {
+    opacity: 100%;
+  }
+}
